@@ -1,13 +1,16 @@
 import React from 'react';
 
+
+
 const FriendsList = props => {
     const { name, age, email } = props.friends;
     return (
-        <div>
+        <div className="friendCardInfo">
             <h1>{name}</h1>
-            <p>{age}</p>
-            <p>{email}</p>
+            <p><span>age:</span> {age}</p>
+            <p><span>email:</span> {email}</p>
         </div>
+        
     )
 }
 
