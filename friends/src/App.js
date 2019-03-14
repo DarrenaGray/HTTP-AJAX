@@ -49,7 +49,7 @@ class App extends React.Component {
       <div className="App">
         <div className="friendCard">
         {this.state.friends.map((friend,id) => (
-        <Route path="/friends" render={props => <FriendsList {...props} friends={friend} key={id}/>} />
+        <Route path="/friends" render={props => <FriendsList {...props} friends={friend} key={id}/>} key={id}/>
         ))}
         </div>
         <Route path="/friends" render={props =>  <FriendForm {...props} addNewFriend={this.addNewFriend}/>}  />
