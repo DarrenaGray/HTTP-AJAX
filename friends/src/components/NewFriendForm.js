@@ -10,7 +10,7 @@ import React from 'react'
      }
 
      changeHandler = e => {
-       // e.persist() allows the input value to change. Using e.preventDefault() returns a TypeError: Cannot read property 'name' of null
+       // e.persist() allows the input value to change. Using e.preventDefault() or using no e.persist() returns a TypeError: Cannot read property 'name' of null
        e.persist();
        this.setState(prevState => ({
           friend: {
@@ -19,12 +19,24 @@ import React from 'react'
           }
        }))
      }
+
+     handleSubmit = e => {
+       this.props.addNewFriend(e, this.state.friend);
+       this.setState({
+         friend: {
+          name: '',
+          age: '',
+          email: ''
+         }
+       })
+
+     }
      
   render() {
     return (
       <div>
         <h1>Add New Friend</h1>
-        <form>
+        <form onSubmit={this.handleSubmit}>
             <input type="text" name="name" onChange={this.changeHandler} value={this.state.friend.name} placeholder="Name"/>
             <input type="number" name="age" onChange={this.changeHandler} value={this.state.friend.age} placeholder="Age"/>
             <input type="email" name="email" onChange={this.changeHandler} value={this.state.friend.email} placeholder="Email"/>
