@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Route } from 'react-router-dom';
 import FriendsList from './components/FriendsList';
 import FriendForm from './components/NewFriendForm';
 import './App.css';
@@ -31,10 +32,10 @@ class App extends React.Component {
       <div className="App">
         <div className="friendCard">
         {this.state.friends.map((friend,id) => (
-        <FriendsList friends={friend} key={id}/>
+        <Route path="/" render={props => <FriendsList {...props} friends={friend} key={id}/>} />
         ))}
         </div>
-        <FriendForm />
+        <Route path="/" render={props =>  <FriendForm {...props} />}  />
       </div>
     );
   }
