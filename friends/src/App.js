@@ -26,16 +26,33 @@ class App extends React.Component {
       });
   }
 
+  addNewFriend = (e, friend) => {
+    console.log('friends check', friend)
+    e.preventDefault();
+    axios
+      .post('http://localhost:5000/friends', friend)
+      .then(res => {
+        console.log(res)
+        this.setState(({
+          friends: res.data
+        }));
+        this.props.history.push('/friends')
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
   render() {
-    console.log('Rendering');
+    console.log('Rendering', this.state.friends);
     return (
       <div className="App">
         <div className="friendCard">
         {this.state.friends.map((friend,id) => (
-        <Route path="/" render={props => <FriendsList {...props} friends={friend} key={id}/>} />
+        <Route path="/friends" render={props => <FriendsList {...props} friends={friend} key={id}/>} />
         ))}
         </div>
-        <Route path="/" render={props =>  <FriendForm {...props} />}  />
+        <Route path="/friends" render={props =>  <FriendForm {...props} addNewFriend={this.addNewFriend}/>}  />
       </div>
     );
   }
