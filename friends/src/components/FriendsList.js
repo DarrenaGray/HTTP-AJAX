@@ -9,6 +9,8 @@ const FriendsList = props => {
             <h1>{name}</h1>
             <p><span>age:</span> {age}</p>
             <p><span>email:</span> {email}</p>
+            <button>Update</button>
+            <button>Delete</button>
         </div>
         
     )
