@@ -5,6 +5,7 @@ body {
 .friendCard {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .friendCardInfo {
