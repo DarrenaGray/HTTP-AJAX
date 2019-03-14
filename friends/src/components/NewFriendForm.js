@@ -10,6 +10,7 @@ import React from 'react'
      }
 
      changeHandler = e => {
+       // e.persist() allows the input value to change. Using e.preventDefault() returns a TypeError: Cannot read property 'name' of null
        e.persist();
        this.setState(prevState => ({
           friend: {
