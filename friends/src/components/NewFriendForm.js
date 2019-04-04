@@ -2,20 +2,13 @@ import React from 'react'
 
  class FriendForm extends React.Component {
      state = {
-       friend: this.props.activeFriend || {
+       friend:{
          name: '',
          age: '',
          email: ''
        }
      };
 
-     componentDidUpdate(prevProps) {
-       if(this.props.activeFriend && prevProps.activeFriend !== this.props.activeFriend) {
-        this.setState({
-         friend: this.props.activeFriend
-       });
-     }
-    }
 
      changeHandler = e => {
        // e.persist() allows the input value to change. Using e.preventDefault() or using no e.persist() returns a TypeError: Cannot read property 'name' of null
@@ -38,7 +31,7 @@ import React from 'react'
           email: ''
          }
        })
-
+       this.props.history.push('/friends')
      }
      
   render() {
