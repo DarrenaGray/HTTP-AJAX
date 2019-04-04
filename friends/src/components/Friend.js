@@ -27,7 +27,6 @@ const Friend = props => {
         <p>{friend.age}</p>
         <p>{friend.email}</p>
         <button onClick={updateFriend}>Update</button>
-        {/* delete button works but error returns due to issues with array not populating on page refresh */}
         <button onClick={deleteFriend}>Delete</button>
     </div>
   )
