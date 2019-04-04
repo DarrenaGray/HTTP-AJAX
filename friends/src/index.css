@@ -2,13 +2,37 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+h1 {
+  color: white;
+  background: #18453b;
+  width: 20%;
+  padding: 32px;
+  margin: 38px auto;
+}
+
 .navBar {
   list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: 1px solid #18453b;
+  height: 33px;
 }
+
 
 .navBar li a {
   text-decoration: none;
+  color: #18453b;
+  padding: 20px;
+  height: 10px;
+  font-weight: 700;
 }
+
+.navBar li a.active {
+  background: #18453b;
+  color: white;
+  padding: 16px;
+}
+
 
 .friendCard {
   display: flex;
@@ -16,7 +40,47 @@ body {
   flex-wrap: wrap;
 }
 
+.friendCard a {
+  text-decoration: none;
+  color: #18453b;
+}
+
+.friendCard a:hover {
+  color: white;
+}
+
 .friendCardInfo {
+  border: 1px solid #18453b;
+  border-radius: 10px;
+  width: 100%;
+  margin: 20px auto;
+  max-width: 300px;
+  min-width: 290px;
+  box-shadow: 10px 10px lightgray;
+}
+
+.friendsCardInfo a {
+  text-decoration: none;
+}
+
+.friendCardInfo:hover {
+  background: #18453b;
+  color: white;
+}
+
+.friendCardInfo h1 {
+  color: #18453b;
+} 
+
+ .friendCardInfo h1:hover{
+  color: white;
+}
+
+.friendCardInfo span {
+  font-weight: 700;
+}
+
+.friend {
   border: 1px solid lightgray;
   border-radius: 10px;
   width: 100%;
@@ -26,21 +90,28 @@ body {
   box-shadow: 10px 10px lightgray;
 }
 
-.friendCardInfo:hover {
-  background: lightblue;
-  color: white;
+.friend h1 {
+  color: #18453b;
 }
 
-.friendCardInfo h1 {
-  color: rgb(201, 133, 247);
-}
-
-.friendCardInfo h1:hover{
-  color: white;
-}
-
-.friendCardInfo span {
+.friend span {
   font-weight: 700;
+}
+
+.friend button {
+  margin: 20px;  
+  background: #18453b;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 5px lightslategray;
+  outline: none;
+  color: white;
+}
+
+.friend button:active {
+  box-shadow: 0 3px darkslategray;
+  transform: translateY(4px);
 }
 
 form {
@@ -56,17 +127,18 @@ form input {
   margin: 20px auto;
 }
 
-form button {
+button {
   margin-bottom: 20px;
-  background: lightblue;
+  background: #18453b;
   border: none;
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0 5px lightslategray;
   outline: none;
+  color: white;
 }
 
-form button:active {
+button:active {
   box-shadow: 0 3px darkslategray;
   transform: translateY(4px);
 }

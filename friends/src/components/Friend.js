@@ -22,10 +22,10 @@ const Friend = props => {
   }
 
   return (
-    <div>
-        <h3>{friend.name}</h3>
-        <p>{friend.age}</p>
-        <p>{friend.email}</p>
+    <div className="friend">
+        <h2>{friend.name}</h2>
+        <p><span>Age:</span> {friend.age}</p>
+        <p><span>Email:</span> {friend.email}</p>
         <button onClick={updateFriend}>Update</button>
         <button onClick={deleteFriend}>Delete</button>
     </div>

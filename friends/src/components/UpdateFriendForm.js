@@ -26,7 +26,7 @@ import React from 'react'
      
   render() {
     return (
-      <div>
+      <div className="updateForm">
         <h1>Update Friend</h1>
         <form onSubmit={this.handleSubmit}>
             <input type="text" name="name" onChange={this.changeHandler} value={this.state.friend.name} placeholder="Name" required/>

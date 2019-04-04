@@ -8,7 +8,7 @@ const FriendsList = props => {
     return (
         <div className="friendCardInfo">
             <Link to={`/friends/${id}`}>
-                <h1>{name}</h1>
+                <h2>{name}</h2>
                 <p><span>age:</span> {age}</p>
                 <p><span>email:</span> {email}</p>
             </Link>
