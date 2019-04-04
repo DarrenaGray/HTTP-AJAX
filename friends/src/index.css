@@ -136,6 +136,7 @@ button {
   box-shadow: 0 5px lightslategray;
   outline: none;
   color: white;
+  margin: 10px;
 }
 
 button:active {

@@ -25,6 +25,7 @@ const Friend = props => {
     <div className="friend">
         <h2>{friend.name}</h2>
         <p><span>Age:</span> {friend.age}</p>
+        <p><span>Home:</span> {friend.home}</p>
         <p><span>Email:</span> {friend.email}</p>
         <button onClick={updateFriend}>Update</button>
         <button onClick={deleteFriend}>Delete</button>

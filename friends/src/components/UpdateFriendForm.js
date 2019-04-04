@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
  class UpdateFriendForm extends React.Component {
      state = {
@@ -31,8 +32,10 @@ import React from 'react'
         <form onSubmit={this.handleSubmit}>
             <input type="text" name="name" onChange={this.changeHandler} value={this.state.friend.name} placeholder="Name" required/>
             <input type="number" name="age" onChange={this.changeHandler} value={this.state.friend.age} placeholder="Age"required/>
+            <input type="text" name="home" onChange={this.changeHandler} value={this.state.friend.home} placeholder="Hometown" required/>
             <input type="email" name="email" onChange={this.changeHandler} value={this.state.friend.email} placeholder="Email" required/>
             <button type="submit">Update Friend</button>
+            <Link to={`/friends/${this.state.friend.id}`}><button type="click">Cancel</button></Link>
         </form>
       </div>
     )
