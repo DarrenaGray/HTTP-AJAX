@@ -1,9 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import { NavLink, Route } from 'react-router-dom';
+import Home from './components/Home';
 import FriendsList from './components/FriendsList';
 import Friend from './components/Friend';
 import FriendForm from './components/NewFriendForm';
+import UpdateFriendFrom from './components/UpdateFriendForm';
 import './App.css';
 
 
@@ -38,44 +40,39 @@ class App extends React.Component {
         this.setState(({
           friends: res.data
         }));
-        // this.props.history.push('/friends')
       })
       .catch(err => {
         console.log(err)
       })
   }
 
-  setUpdateForm = (e, friend) => {
-    e.preventDefault();
-    this.setState({
-      activeFriend: friend
-    });
-    this.props.history.push('/friends-form')
-  }
 
-  updateFriend = (e, friend) => {
-    e.preventDefault();
+  updateFriend = updateFriend => {
+    console.log('update check', updateFriend)
     axios
-      .put(`http://localhost:5000/friends/${friend.id}`, friend)
+      .put(`http://localhost:5000/friends/${updateFriend.id}`, updateFriend)
       .then(res => {
         console.log(res)
         this.setState({
-          activeFriend: null,
           friends: res.data
-        });
+        })
         this.props.history.push('/friends')
       })
       .catch(err => {
         console.log(err)
       })
-
   }
 
-  deleteFriend = (e, id) => {
-    console.log('delete check', id)
-    e.preventDefault();
+  setActiveFriend = friend => {
+    this.setState({
+      activeFriend: friend
+    })
+  }
+
+  deleteFriend = friend => {
+    console.log('delete check', friend)
     axios
-      .delete(`http://localhost:5000/friends/${id}`)
+      .delete(`http://localhost:5000/friends/${friend.id}`)
       .then(res => {
         console.log(res)
         this.setState({
@@ -94,19 +91,44 @@ class App extends React.Component {
     return (
       <div className="App">
         <ul className="navBar">
-          <li><NavLink to="/friends" className="activeNav">Home</NavLink>
+          <li><NavLink exact to="/" className="activeNav">Home</NavLink>
           </li>
           <li>
-            <NavLink to="/friends-form">Add Friend</NavLink>
+            <NavLink exact to="/friends" className="activeNav">Friends</NavLink>
+          </li>
+          <li>
+            <NavLink exact to="/friends-form" className="activeNav">Add Friend</NavLink>
           </li>
         </ul>
+        <Route exact path='/' component={Home}/>
         <div className="friendCard">
+        
         {this.state.friends.map((friend,id) => (
         <Route exact path="/friends" render={props => <FriendsList {...props} friends={friend} key={id}/>} key={id}/>
         ))}
         </div>
-        <Route path='/friends/:id' render={props => <Friend {...props} friends={this.state.friends} setUpdateForm={this.setUpdateForm} deleteFriend={this.deleteFriend}/>}/>
-        <Route path="/friends-form" render={props =>  <FriendForm {...props} addNewFriend={this.addNewFriend}/>} activeFriend={this.state.activeFriend} update={this.updateFriend}/>
+        <Route path='/friends/:id' render={props => (
+            <Friend 
+              {...props} 
+              friends={this.state.friends} 
+              setActiveFriend={this.setActiveFriend} 
+              deleteFriend={this.deleteFriend}
+            />
+          )}
+        />
+        <Route path="/friends-form" render={props =>  (
+          <FriendForm 
+            {...props} 
+            addNewFriend={this.addNewFriend}
+          />)}
+         />
+        <Route path='/update-friend' render={props => (
+          <UpdateFriendFrom 
+            {...props} 
+            updateFriend={this.updateFriend} 
+            activeFriend={this.state.activeFriend} 
+          />)}
+        />
       </div>
     );
   }
